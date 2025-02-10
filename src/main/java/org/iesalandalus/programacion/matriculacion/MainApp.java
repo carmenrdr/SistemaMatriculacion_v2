@@ -12,6 +12,7 @@ public class MainApp {
         Controlador controlador = new Controlador(modelo, vista);
         controlador.comenzar();
 
+        //prueba
     }
 
 }
