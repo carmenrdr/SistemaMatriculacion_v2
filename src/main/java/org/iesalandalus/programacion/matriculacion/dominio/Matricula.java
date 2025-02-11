@@ -2,6 +2,8 @@ package org.iesalandalus.programacion.matriculacion.dominio;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Matricula {
@@ -19,7 +21,8 @@ public class Matricula {
     private LocalDate fechaAnulacion;
 
     private Alumno alumno;
-    private Asignatura[] coleccionAsignaturas; // = new Asignatura[MAXIMO_NUMERO_ASIGNATURAS_POR_MATRICULA];
+    //private Asignatura[] coleccionAsignaturas; // = new Asignatura[MAXIMO_NUMERO_ASIGNATURAS_POR_MATRICULA];
+    private List<Asignatura> coleccionAsignaturas = new ArrayList<>();
 
     public Matricula(int idMatricula, String cursoAcademico, LocalDate fechaMatriculacion, Alumno alumno, Asignatura[] coleccionAsignaturas){
         setIdMatricula(idMatricula);
