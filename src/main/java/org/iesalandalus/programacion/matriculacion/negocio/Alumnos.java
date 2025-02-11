@@ -59,7 +59,7 @@ public class Alumnos {
         }
 
         if (!coleccionAlumnos.remove(alumno)) {
-            throw new IllegalArgumentException("ERROR: El alumno no existe.");
+            throw new IllegalArgumentException("ERROR: El alumno a borrar no existe.");
         }
     }
 
