@@ -7,6 +7,8 @@ import org.iesalandalus.programacion.matriculacion.dominio.Matricula;
 import org.iesalandalus.programacion.matriculacion.modelo.Modelo;
 import org.iesalandalus.programacion.matriculacion.vista.Vista;
 
+import java.util.List;
+
 public class Controlador {
 
     private Vista vista;
@@ -50,7 +52,7 @@ public class Controlador {
         modelo.borrar(alumno);
     }
 
-    public Alumno[] getAlumnos() {
+    public List<Alumno> getAlumnos() {
         return modelo.getAlumnos();
     }
 
@@ -66,7 +68,7 @@ public class Controlador {
         modelo.borrar(asignatura);
     }
 
-    public Asignatura[] getAsignaturas() {
+    public List<Asignatura> getAsignaturas() {
         return modelo.getAsignaturas();
     }
 
@@ -82,7 +84,7 @@ public class Controlador {
         modelo.borrar(cicloFormativo);
     }
 
-    public CicloFormativo[] getCiclosFormativos() {
+    public List<CicloFormativo> getCiclosFormativos() {
         return modelo.getCiclosFormativos();
     }
 
@@ -98,19 +100,19 @@ public class Controlador {
         modelo.borrar(matricula);
     }
 
-    public Matricula[] getMatriculas() {
+    public List<Matricula> getMatriculas() {
         return modelo.getMatriculas();
     }
 
-    public Matricula[] getMatriculas(Alumno alumno) throws Exception {
+    public List<Matricula> getMatriculas(Alumno alumno) throws Exception {
         return modelo.getMatriculas(alumno);
     }
 
-    public Matricula[] getMatriculas(CicloFormativo cicloFormativo) throws Exception {
+    public List<Matricula> getMatriculas(CicloFormativo cicloFormativo) throws Exception {
         return modelo.getMatriculas(cicloFormativo);
     }
 
-    public Matricula[] getMatriculas(String cursoAcademico) throws Exception {
+    public List<Matricula> getMatriculas(String cursoAcademico) throws Exception {
         return modelo.getMatriculas(cursoAcademico);
     }
 
