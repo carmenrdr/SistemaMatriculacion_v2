@@ -9,9 +9,9 @@ import org.iesalandalus.programacion.matriculacion.negocio.Asignaturas;
 import org.iesalandalus.programacion.matriculacion.negocio.CiclosFormativos;
 import org.iesalandalus.programacion.matriculacion.negocio.Matriculas;
 
-public class Modelo {
+import java.util.List;
 
-    public int CAPACIDAD;
+public class Modelo {
 
     private Alumnos alumnos;
     private Matriculas matriculas;
@@ -19,10 +19,10 @@ public class Modelo {
     private CiclosFormativos ciclosFormativos;
 
     public void comenzar() {
-        alumnos = new Alumnos(CAPACIDAD);
-        matriculas = new Matriculas(CAPACIDAD);
-        asignaturas = new Asignaturas(CAPACIDAD);
-        ciclosFormativos = new CiclosFormativos(CAPACIDAD);
+        alumnos = new Alumnos();
+        matriculas = new Matriculas();
+        asignaturas = new Asignaturas();
+        ciclosFormativos = new CiclosFormativos();
     }
 
     public void terminar() {
@@ -77,31 +77,31 @@ public class Modelo {
         matriculas.borrar(matricula);
     }
 
-    public Alumno[] getAlumnos() {
+    public List<Alumno> getAlumnos() {
         return alumnos.get();
     }
 
-    public Asignatura[] getAsignaturas() {
+    public List<Asignatura> getAsignaturas() {
         return asignaturas.get();
     }
 
-    public CicloFormativo[] getCiclosFormativos() {
+    public List<CicloFormativo> getCiclosFormativos() {
         return ciclosFormativos.get();
     }
 
-    public Matricula[] getMatriculas() {
+    public List<Matricula> getMatriculas() {
         return matriculas.get();
     }
 
-    public Matricula[] getMatriculas(Alumno alumno) throws Exception {
+    public List<Matricula> getMatriculas(Alumno alumno) throws Exception {
         return matriculas.get(alumno);
     }
 
-    public Matricula[] getMatriculas(CicloFormativo cicloFormativo) throws Exception {
+    public List<Matricula> getMatriculas(CicloFormativo cicloFormativo) throws Exception {
         return matriculas.get(cicloFormativo);
     }
 
-    public Matricula[] getMatriculas(String cursoAcademico) throws Exception {
+    public List<Matricula> getMatriculas(String cursoAcademico) throws Exception {
         return matriculas.get(cursoAcademico);
     }
 
