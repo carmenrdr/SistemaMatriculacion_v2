@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Matriculas {
 
-    private List<Matricula> coleccionMatriculas = new ArrayList<>();
+    private final List<Matricula> coleccionMatriculas;
 
     public Matriculas(){
         this.coleccionMatriculas = new ArrayList<>();
@@ -19,7 +19,7 @@ public class Matriculas {
         return copiaProfundaMatricula(coleccionMatriculas);
     }
 
-    private List<Matricula> copiaProfundaMatricula(List<Matricula> coleccionMatriculas){
+    private static List<Matricula> copiaProfundaMatricula(List<Matricula> coleccionMatriculas){
         List<Matricula> coleccionAux = new ArrayList<>();
 
         for (Matricula matricula : coleccionMatriculas) {
@@ -53,7 +53,12 @@ public class Matriculas {
                 encontrado = true;
             }
         }
-        return new Matricula(coleccionMatriculas.get(indice));
+
+        if (!encontrado) {
+            throw new IllegalArgumentException("ERROR: No existe esta matrícula");
+        } else {
+            return new Matricula(coleccionMatriculas.get(indice));
+        }
     }
 
     public void borrar(Matricula matricula) throws Exception {

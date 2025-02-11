@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Alumnos {
 
-    private List<Alumno> coleccionAlumnos = new ArrayList<>();
+    private final List<Alumno> coleccionAlumnos;
 
     public Alumnos(){
         this.coleccionAlumnos = new ArrayList<>();
@@ -50,7 +50,12 @@ public class Alumnos {
                 encontrado = true;
             }
         }
-        return new Alumno(coleccionAlumnos.get(indice));
+
+        if (!encontrado) {
+            throw new IllegalArgumentException("ERROR: El/la alumna no existe.");
+        } else {
+            return new Alumno(coleccionAlumnos.get(indice));
+        }
     }
 
     public void borrar(Alumno alumno) throws Exception {
