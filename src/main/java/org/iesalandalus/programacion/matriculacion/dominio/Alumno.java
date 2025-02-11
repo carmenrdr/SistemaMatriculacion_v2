@@ -1,6 +1,7 @@
 package org.iesalandalus.programacion.matriculacion.dominio;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Alumno {
@@ -212,8 +213,14 @@ public class Alumno {
         return Objects.hashCode(this.dni);
     }
 
+    public String imprimir() {
+        return String.format("Número de Identificación del Alumnado (NIA)=%s " + "nombre=%s (%s), DNI=%s, correo=%s, teléfono=%s, fecha nacimiento=%s",
+                nia, nombre, dni, correo, telefono, fechaNacimiento.format(DateTimeFormatter.ofPattern(FORMATO_FECHA)));
+    }
+
     @Override
     public String toString() {
-        return String.format("Número de Identificación del Alumnado (NIA)=%s + nombre=%s (%s), DNI=%s, correo=%s, teléfono=%s, fecha nacimiento=%s", nia, nombre, dni, correo, telefono, fechaNacimiento);
+        return String.format("Número de Identificación del Alumnado (NIA)=%s + nombre=%s (%s), DNI=%s, correo=%s, teléfono=%s, fecha nacimiento=%s",
+                nia, nombre, dni, correo, telefono, fechaNacimiento.format(DateTimeFormatter.ofPattern(FORMATO_FECHA)));
     }
 }

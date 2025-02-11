@@ -24,7 +24,7 @@ public class Matricula {
     //private Asignatura[] coleccionAsignaturas; // = new Asignatura[MAXIMO_NUMERO_ASIGNATURAS_POR_MATRICULA];
     private List<Asignatura> coleccionAsignaturas = new ArrayList<>();
 
-    public Matricula(int idMatricula, String cursoAcademico, LocalDate fechaMatriculacion, Alumno alumno, Asignatura[] coleccionAsignaturas){
+    public Matricula(int idMatricula, String cursoAcademico, LocalDate fechaMatriculacion, Alumno alumno, List<Asignatura> coleccionAsignaturas){
         setIdMatricula(idMatricula);
         setCursoAcademico(cursoAcademico);
         setFechaMatriculacion(fechaMatriculacion);
@@ -40,7 +40,7 @@ public class Matricula {
             this.cursoAcademico = matricula.getCursoAcademico();
             this.fechaMatriculacion = matricula.getFechaMatriculacion();
             this.alumno = matricula.getAlumno();
-            this.coleccionAsignaturas = List.of(matricula.getColeccionAsignaturas());
+            this.coleccionAsignaturas = matricula.getColeccionAsignaturas();
         }
     }
 
@@ -122,27 +122,27 @@ public class Matricula {
         }
     }
 
-    public Asignatura[] getColeccionAsignaturas(){
+    public List<Asignatura> getColeccionAsignaturas(){
         return coleccionAsignaturas;
     }
 
-    public void setColeccionAsignaturas(Asignatura[] coleccionAsignaturas){
+    public void setColeccionAsignaturas(List<Asignatura> coleccionAsignaturas){
         if (coleccionAsignaturas == null){
             throw new IllegalArgumentException("ERROR: La lista de asignaturas de una matrícula no puede ser nula.");
-        } else if (coleccionAsignaturas.length > MAXIMO_NUMERO_ASIGNATURAS_POR_MATRICULA){
+        } else if (coleccionAsignaturas.size() > MAXIMO_NUMERO_ASIGNATURAS_POR_MATRICULA){
             throw new IllegalArgumentException("ERROR: No puede haber más de 10 asignaturas por matricula.");
         } if (superaMaximoNumeroHorasMatricula(coleccionAsignaturas)) {
             throw new IllegalArgumentException("ERROR: No se puede realizar la matrícula ya que supera el máximo de horas permitidas (" + Matricula.MAXIMO_NUMERO_HORAS_MATRICULA +" horas).");
         } else {
-            this.coleccionAsignaturas = List.of(coleccionAsignaturas);
+            this.coleccionAsignaturas = coleccionAsignaturas;
         }
     }
 
-    private boolean superaMaximoNumeroHorasMatricula(Asignatura[] asignaturasMatricula){
+    private boolean superaMaximoNumeroHorasMatricula(List<Asignatura> asignaturasMatricula){
         int totalHorasMatricula = 0;
 
-        for (int i = 0; i < asignaturasMatricula.length; i++){
-            totalHorasMatricula += asignaturasMatricula[i].getHorasAnuales();
+        for (int i = 0; i < asignaturasMatricula.size(); i++){
+            totalHorasMatricula += asignaturasMatricula.get(i).getHorasAnuales();
         }
 
         return (totalHorasMatricula > 1000);
@@ -151,10 +151,10 @@ public class Matricula {
     private String asignaturasMatricula(){
         StringBuilder codigosMatricula = new StringBuilder();
 
-        for (int i = 0; i < coleccionAsignaturas.length; i++){
-            codigosMatricula.append(coleccionAsignaturas[i].getCodigo());
+        for (int i = 0; i < coleccionAsignaturas.size(); i++){
+            codigosMatricula.append(coleccionAsignaturas.get(i).getCodigo());
 
-            if (i < coleccionAsignaturas.length-1) {
+            if (i < coleccionAsignaturas.size()-1) {
                 codigosMatricula.append(", ");
             }
         }
@@ -184,7 +184,7 @@ public class Matricula {
 
     public String imprimir() {
         return String.format("idMatricula=%d, curso académico=%s, fecha matriculación=%s, alumno={%s}", idMatricula, cursoAcademico,
-                fechaMatriculacion.format(DateTimeFormatter.ofPattern(Matricula.FORMATO_FECHA)), alumno.toString());
+                fechaMatriculacion.format(DateTimeFormatter.ofPattern(Matricula.FORMATO_FECHA)), alumno.imprimir());
     }
 
     @Override
