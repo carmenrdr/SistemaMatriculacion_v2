@@ -19,7 +19,7 @@ public class Vista {
         this.controlador = controlador;
     }
 
-    public void comenzar() {
+    public void comenzar() throws Exception {
 
         Opcion opcionElegida;
 
@@ -36,7 +36,7 @@ public class Vista {
         controlador.terminar();
     }
 
-    private void ejecutarOpcion(Opcion opcion) {
+    private void ejecutarOpcion(Opcion opcion) throws Exception {
 
         switch (opcion) {
             case INSERTAR_ALUMNO:

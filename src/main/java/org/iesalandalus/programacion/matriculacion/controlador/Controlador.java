@@ -28,7 +28,7 @@ public class Controlador {
         this.vista.setControlador(this);
     }
 
-    public void comenzar() {
+    public void comenzar() throws Exception {
         System.out.println("--------------------------------------------------------------------------------");
         System.out.println("Le damos la bienvenida al sistema de matriculación del instituto IES Al-Ándalus.");
         System.out.println("--------------------------------------------------------------------------------");

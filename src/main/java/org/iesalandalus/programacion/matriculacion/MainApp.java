@@ -10,7 +10,11 @@ public class MainApp {
         Modelo modelo = new Modelo();
         Vista vista = new Vista();
         Controlador controlador = new Controlador(modelo, vista);
-        controlador.comenzar();
+        try {
+            controlador.comenzar();
+        } catch (Exception e) {
+            System.out.println("ERROR: "+e.getMessage());
+        }
 
     }
 
