@@ -40,7 +40,7 @@ public class Matricula {
             this.cursoAcademico = matricula.getCursoAcademico();
             this.fechaMatriculacion = matricula.getFechaMatriculacion();
             this.alumno = matricula.getAlumno();
-            this.coleccionAsignaturas = matricula.getColeccionAsignaturas();
+            this.coleccionAsignaturas = List.of(matricula.getColeccionAsignaturas());
         }
     }
 
@@ -134,7 +134,7 @@ public class Matricula {
         } if (superaMaximoNumeroHorasMatricula(coleccionAsignaturas)) {
             throw new IllegalArgumentException("ERROR: No se puede realizar la matrícula ya que supera el máximo de horas permitidas (" + Matricula.MAXIMO_NUMERO_HORAS_MATRICULA +" horas).");
         } else {
-            this.coleccionAsignaturas = coleccionAsignaturas;
+            this.coleccionAsignaturas = List.of(coleccionAsignaturas);
         }
     }
 
