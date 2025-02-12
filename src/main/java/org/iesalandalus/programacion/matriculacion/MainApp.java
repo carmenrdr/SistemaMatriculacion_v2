@@ -11,6 +11,7 @@ public class MainApp {
         Vista vista = new Vista();
         Controlador controlador = new Controlador(modelo, vista);
 
+
         try {
             controlador.comenzar();
         } catch (Exception e) {
